@@ -25,7 +25,6 @@ import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import javax.swing.text.MaskFormatter;
 
-
 public class LoginForm extends JFrame {
 	JTextField txtId, txtName, txtGender, txtRollNumber, txtClassName;
 	JSpinner txtBirthday;
@@ -41,12 +40,11 @@ public class LoginForm extends JFrame {
 	}
 
 	public void addControls() {
-		JFrame frame = new JFrame("Form "+sdf.format(new Date()));
+		JFrame frame = new JFrame("Form " + sdf.format(new Date()));
 		frame.setSize(800, 600);
 		frame.setLayout(null);
 
 		JPanel pnLogin = new JPanel();
-		// pnLogin.setBorder(BorderFactory.createBevelBorder(1));
 		Border border = BorderFactory.createLineBorder(Color.cyan, 1);
 		TitledBorder titleBorder = BorderFactory.createTitledBorder("Form Thông Tin");
 		pnLogin.setBorder(titleBorder);
@@ -57,7 +55,6 @@ public class LoginForm extends JFrame {
 		JLabel lblId = new JLabel("ID: ");
 		lblId.setBounds(100, 50, 100, 30);
 		pnLogin.add(lblId);
-
 		txtId = new JTextField();
 		txtId.setBounds(200, 50, 400, 30);
 		pnLogin.add(txtId);
@@ -65,7 +62,6 @@ public class LoginForm extends JFrame {
 		JLabel lblName = new JLabel("Name: ");
 		lblName.setBounds(100, 90, 100, 30);
 		pnLogin.add(lblName);
-
 		txtName = new JTextField();
 		txtName.setBounds(200, 90, 400, 30);
 		pnLogin.add(txtName);
@@ -73,7 +69,6 @@ public class LoginForm extends JFrame {
 		JLabel lblGender = new JLabel("Gender: ");
 		lblGender.setBounds(100, 130, 100, 30);
 		pnLogin.add(lblGender);
-
 		radMale = new JRadioButton("Male ");
 		radMale.setBounds(200, 130, 100, 30);
 		pnLogin.add(radMale);
@@ -88,7 +83,6 @@ public class LoginForm extends JFrame {
 		JLabel lblEmail = new JLabel("Email: ");
 		lblEmail.setBounds(100, 170, 100, 30);
 		pnLogin.add(lblEmail);
-
 		txtEmail = new JFormattedTextField();
 		txtEmail.setBounds(200, 170, 400, 30);
 		pnLogin.add(txtEmail);
@@ -100,7 +94,6 @@ public class LoginForm extends JFrame {
 		try {
 			mkPhone = new MaskFormatter("#### ### ###");
 		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		mkPhone.setPlaceholderCharacter('_');
@@ -111,11 +104,9 @@ public class LoginForm extends JFrame {
 		JLabel lblBirthday = new JLabel("Birthday: ");
 		lblBirthday.setBounds(100, 250, 100, 30);
 		pnLogin.add(lblBirthday);
-		
 		SpinnerDateModel sdm = new SpinnerDateModel();
 		txtBirthday = new JSpinner(sdm);
 		txtBirthday.setEditor(new JSpinner.DateEditor(txtBirthday, "dd/MM/yyyy"));
-        
 		txtBirthday.setBounds(200, 250, 400, 30);
 		pnLogin.add(txtBirthday);
 
@@ -139,7 +130,6 @@ public class LoginForm extends JFrame {
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 	}
 
 	public void addEvents() {
@@ -156,7 +146,6 @@ public class LoginForm extends JFrame {
 			}
 		});
 	}
-
 	protected void resetInformation() {
 		txtId.setText("");
 		txtName.setText("");
@@ -166,23 +155,21 @@ public class LoginForm extends JFrame {
 		txtRollNumber.setText("");
 		txtClassName.setText("");
 	}
-
 	protected void getInformation() {
-		String msg ="Id: " + txtId.getText() + "\n" + "Name: " + txtName.getText() + "\n";
 		String gender = "";
 		if (radMale.isSelected()) {
 			gender = radMale.getText();
 		} else {
 			gender = radFeMale.getText();
-
 		}
-		msg += "Gender: " + gender + "\nEmail: " + txtEmail.getText() + "\nBirthday: " + txtBirthday.getName()
-				+ "\nPhone: " + txtPhone.getText() + "\nRoll number: " + txtRollNumber.getText();
-
+		String msg = "Id: " + txtId.getText() + "\nName: " + txtName.getText() + "\nGender: " + gender + "\nEmail: "
+				+ txtEmail.getText() + "\nBirthday: " + txtBirthday.getName() + "\nPhone: " + txtPhone.getText()
+				+ "\nRoll number: " + txtRollNumber.getText();
 		JOptionPane.showConfirmDialog(null, msg);
 	}
+
 	public static void main(String[] args) {
-		LoginForm ui=new LoginForm();
+		LoginForm ui = new LoginForm();
 	}
 
 }
